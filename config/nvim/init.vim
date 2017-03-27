@@ -43,3 +43,9 @@ colorscheme OceanicNext
 hi! Normal ctermbg=NONE guibg=NONE
 
 " autocmd BufReadPost *.js nnoremap <buffer> K :TernDoc<CR>
+
+" Navigation in window buffers
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
