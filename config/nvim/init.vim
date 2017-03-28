@@ -9,6 +9,7 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 " List plugins for install
     Plug 'Shougo/deoplete.nvim'
+    Plug 'ervandew/supertab'
     Plug 'Shougo/unite.vim'
     Plug 'Shougo/denite.nvim'
     Plug 'itchyny/lightline.vim'
@@ -70,15 +71,19 @@ call plug#end()
     set cmdheight=2
     set lazyredraw
     set foldcolumn=0
+    set mouse=n
+    set clipboard=unnamedplus
+    set list
+    set listchars=tab:>.,trail:.,extends:\#,nbsp:.
 
     " Return to last edit position when opening files (You want this!)
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-	" Move a line of text using ALT+[jk] or Command+[jk] on mac
-	nmap <M-j> mz:m+<cr>`z
-	nmap <M-k> mz:m-2<cr>`z
-	vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-	vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z<Paste>
+    " Move a line of text using ALT+[jk] or Command+[jk] on mac
+    nmap <M-j> mz:m+<cr>`z
+    nmap <M-k> mz:m-2<cr>`z
+    vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+    vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z<Paste>
 
 " Indents
     set autoindent
@@ -119,3 +124,4 @@ call plug#end()
 
 " Lightline
     source ~/.config/nvim/settings/ligthline.vim
+
