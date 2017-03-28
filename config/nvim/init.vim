@@ -77,6 +77,15 @@ call plug#end()
     set list
     set listchars=tab:>.,trail:.,extends:\#,nbsp:.
 
+    " Shift text
+    nnoremap > >>
+    nnoremap < <<
+    vnoremap > >gv
+    vnoremap < <gv
+
+    " Auto move cursor to end or start line
+    set whichwrap+=h,l
+
     " Return to last edit position when opening files (You want this!)
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
