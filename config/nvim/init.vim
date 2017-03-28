@@ -1,51 +1,121 @@
 set nocompatible
 let mapleader=","
 
-if (!isdirectory(expand("$HOME/.config/nvim/repos/github.com/Shougo/dein.vim")))
-  call system(expand("mkdir -p $HOME/.config/nvim/repos/github.com"))
-  call system(expand("git clone https://github.com/Shougo/dein.vim $HOME/.config/nvim/repos/github.com/Shougo/dein.vim"))
-endif
+"
+" PLUGINS
+"
 
-set runtimepath+=~/.config/nvim/repos/github.com/Shougo/dein.vim/
 call plug#begin(expand('~/.config/nvim/plugged'))
-Plug 'Shougo/dein.vim'
 
 " List plugins for install
-Plug 'Shougo/deoplete.nvim'
-Plug 'airblade/vim-gitgutter'
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'Shougo/unite.vim'
+    Plug 'Shougo/denite.nvim'
+    Plug 'itchyny/lightline.vim'
 
-Plug 'editorconfig/editorconfig-vim'
-Plug 'tomtom/tcomment_vim'
-Plug 'tpope/vim-surround'
+" Git
+    Plug 'chrisbra/vim-diff-enhanced'
+    Plug 'airblade/vim-gitgutter'
+    Plug 'vim-scripts/gitignore'
+    Plug 'tpope/vim-fugitive'
 
-Plug 'heavenshell/vim-jsdoc'
-Plug 'ternjs/tern_for_vim'
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+" Themes
+    " Plug 'mhartington/oceanic-next'
+    " Plug 'jdkanani/vim-material-theme'
+    Plug 'altercation/vim-colors-solarized'
 
-Plug 'Shougo/unite.vim'
-Plug 'Shougo/vimfiler.vim'
-Plug 'Shougo/denite.nvim'
+" CSS
+    Plug 'wavded/vim-stylus'
 
-Plug 'mhartington/oceanic-next'
-Plug 'jdkanani/vim-material-theme'
-" Plug 'vimlab/neojs'
+" JavaScript
+    Plug 'othree/yajs.vim'
+    Plug 'othree/es.next.syntax.vim'
+    Plug 'heavenshell/vim-jsdoc'
+    Plug 'ternjs/tern_for_vim'
+    Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+
+" Find and Navigation
+    Plug 'numkil/ag.nvim'
+    Plug 'ctrlpvim/ctrlp.vim'
+    Plug 'Shougo/vimfiler.vim'
+
+" Helpers
+    Plug 'pbrisbin/vim-mkdir'
+    Plug 'Townk/vim-autoclose'
+    Plug 'bronson/vim-trailing-whitespace'
+    Plug 'tpope/vim-eunuch'
+    Plug 'tomtom/tcomment_vim'
+    Plug 'tpope/vim-surround'
+    Plug 'editorconfig/editorconfig-vim'
+
 call plug#end()
 
-" Use deoplete.
-let g:python3_host_prog = '/usr/bin/python3'
-let g:deoplete#enable_at_startup = 1
 
-syntax on 
-" set background=dark
-colorscheme OceanicNext
+"
+" SETTINGS
+"
 
-" Set opacity for background
-hi! Normal ctermbg=NONE guibg=NONE
+" Theme settings
+    syntax on
+    set background=dark
+    colorscheme solarized
+    hi! Normal ctermbg=NONE guibg=NONE
 
-" autocmd BufReadPost *.js nnoremap <buffer> K :TernDoc<CR>
+" Editor settings
+    " let &titlestring = expand("%:r")
+    " set title
+    set encoding=utf-8
+    set fileformat=unix
+    set ruler
+    set cmdheight=2
+    set lazyredraw
+    set foldcolumn=0
+
+    " Return to last edit position when opening files (You want this!)
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+	" Move a line of text using ALT+[jk] or Command+[jk] on mac
+	nmap <M-j> mz:m+<cr>`z
+	nmap <M-k> mz:m-2<cr>`z
+	vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+	vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z<Paste>
+
+" Indents
+    set autoindent
+    set smartindent
+    set smarttab
+    set smartcase
+    set ignorecase
+    set shiftwidth=4
+    set expandtab
+    set tabstop=4
+    set softtabstop=4
 
 " Navigation in window buffers
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+    nnoremap <C-h> <C-w>h
+    nnoremap <C-j> <C-w>j
+    nnoremap <C-k> <C-w>k
+    nnoremap <C-l> <C-w>l
+
+" Fast move cursor
+    noremap H ^
+    noremap L g_
+    noremap J 5j
+    noremap K 5k
+
+" Relative path settings
+    map <Leader>n :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
+    let g:ag_working_path_mode="r"
+
+" Trim spaces before save
+    autocmd BufWritePre * :%s/\s\+$//e
+
+" GitGutter
+    let g:gitgutter_enabled=0
+    nnoremap <silent> <leader>d :GitGutterToggle<cr>
+
+" Deoplete settings
+    source ~/.config/nvim/settings/deoplete.vim
+
+" Lightline
+    source ~/.config/nvim/settings/ligthline.vim
