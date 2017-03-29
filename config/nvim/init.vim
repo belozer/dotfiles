@@ -13,17 +13,21 @@ call plug#begin(expand('~/.config/nvim/plugged'))
     Plug 'Shougo/unite.vim'
     Plug 'Shougo/denite.nvim'
     Plug 'itchyny/lightline.vim'
+    Plug 'vim-scripts/ruscmd'
+    Plug 'gcmt/taboo.vim'
 
 " Git
     Plug 'chrisbra/vim-diff-enhanced'
     Plug 'airblade/vim-gitgutter'
-    Plug 'vim-scripts/gitignore'
+    " Plug 'vim-scripts/gitignore'
     Plug 'tpope/vim-fugitive'
 
 " Themes
     " Plug 'mhartington/oceanic-next'
     " Plug 'jdkanani/vim-material-theme'
     Plug 'altercation/vim-colors-solarized'
+    Plug 'kamwitsta/nordisk'
+    Plug 'icymind/NeoSolarized'
 
 " CSS
     Plug 'wavded/vim-stylus'
@@ -49,6 +53,7 @@ call plug#begin(expand('~/.config/nvim/plugged'))
     Plug 'tpope/vim-surround'
     Plug 'editorconfig/editorconfig-vim'
     Plug 'matze/vim-move'
+    Plug 'NLKNguyen/copy-cut-paste.vim'
 
 call plug#end()
 
@@ -59,9 +64,17 @@ call plug#end()
 
 " Theme settings
     syntax on
+    set termguicolors
     set background=dark
-    colorscheme solarized
+    colorscheme NeoSolarized
     hi! Normal ctermbg=NONE guibg=NONE
+    " let g:gitgutter_override_sign_column_highlight = 0
+    let g:neosolarized_contrast = "low"
+    let g:neosolarized_visibility = "high"
+    let g:neosolarized_vertSplitBgTrans = 1
+    let g:neosolarized_bold = 1
+    let g:neosolarized_underline = 1
+    let g:neosolarized_italic = 0
 
 " Editor settings
     " let &titlestring = expand("%:r")
@@ -73,7 +86,7 @@ call plug#end()
     set lazyredraw
     set foldcolumn=0
     set mouse=n
-    set clipboard=unnamedplus
+    " set clipboard=unnamedplus
     set list
     set listchars=tab:>.,trail:.,extends:\#,nbsp:.
 
@@ -88,6 +101,16 @@ call plug#end()
 
     " Return to last edit position when opening files (You want this!)
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+    " Tabs
+    " change: Ctrl+Left, Ctrl+Right
+    " move: Alt+Left, Alt+Right
+    nnoremap <C-Left> :tabprevious<CR>
+    nnoremap <C-Right> :tabnext<CR>
+    nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
+    nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
+
+    set sessionoptions+=tabpages,globals
 
 " Indents
     set autoindent
@@ -129,3 +152,17 @@ call plug#end()
 " Lightline
     source ~/.config/nvim/settings/ligthline.vim
 
+" VimFiler
+    source ~/.config/nvim/settings/vimfiler.vim
+
+" Copy-cut-past
+    let g:copy_cut_paste_no_mappings = 1
+
+    " Use your keymap
+    nmap QC <Plug>CCP_CopyLine
+    vmap QC <Plug>CCP_CopyText
+
+    nmap QX <Plug>CCP_CutLine
+    vmap QX <Plug>CCP_CutText
+
+    nmap QV <Plug>CCP_PasteText
