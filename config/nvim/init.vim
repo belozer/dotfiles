@@ -91,6 +91,10 @@ call plug#end()
     set list
     set listchars=tab:>.,trail:.,extends:\#,nbsp:.
 
+    " Split direction
+    set splitright
+    set splitbelow
+
     " Shift text
     nnoremap > >>
     nnoremap < <<
