@@ -54,6 +54,7 @@ call plug#begin(expand('~/.config/nvim/plugged'))
     Plug 'editorconfig/editorconfig-vim'
     Plug 'matze/vim-move'
     Plug 'NLKNguyen/copy-cut-paste.vim'
+    Plug 'Yggdroot/indentLine'
 
 call plug#end()
 
@@ -111,6 +112,10 @@ call plug#end()
     nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
 
     set sessionoptions+=tabpages,globals
+
+    " Disable hightlight after search
+    nnoremap <esc> :noh<return><esc>
+    nnoremap <esc>^[ <esc>^[
 
 " Indents
     set autoindent
