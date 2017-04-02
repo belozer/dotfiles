@@ -28,9 +28,12 @@ call plug#begin(expand('~/.config/nvim/plugged'))
     Plug 'altercation/vim-colors-solarized'
     Plug 'kamwitsta/nordisk'
     Plug 'icymind/NeoSolarized'
+    Plug 'jacoborus/tender.vim'
 
 " CSS
     Plug 'wavded/vim-stylus'
+    Plug 'hail2u/vim-css3-syntax'
+    " Plug 'lepture/vim-css'
 
 " JavaScript
     Plug 'othree/yajs.vim'
@@ -55,6 +58,8 @@ call plug#begin(expand('~/.config/nvim/plugged'))
     Plug 'matze/vim-move'
     Plug 'NLKNguyen/copy-cut-paste.vim'
     Plug 'Yggdroot/indentLine'
+    Plug 'thaerkh/vim-workspace'
+    " Plug 'blueyed/vim-diminactive'  " window focus
 
 call plug#end()
 
@@ -63,115 +68,57 @@ call plug#end()
 " SETTINGS
 "
 
+" Deoplete settings
+    source ~/.config/nvim/settings/deoplete.vim
+
+" VimFiler
+    source ~/.config/nvim/settings/vimfiler.vim
+
+" Lightline
+    source ~/.config/nvim/settings/ligthline.vim
+
+" Editor
+    source ~/.config/nvim/settings/editor.vim
+
+" Aliases
+cnoreabbrev TO TabooOpen
+cnoreabbrev TR TabooRename
+cnoreabbrev TC tabclose
+
 " Theme settings
+    " if (has("termguicolors"))
+    "     set termguicolors
+    " endif
+    set  t_Co=256
+    " let g:solarized_termcolors=256
     syntax on
-    set termguicolors
     set background=dark
-    colorscheme NeoSolarized
-    hi! Normal ctermbg=NONE guibg=NONE
-    " let g:gitgutter_override_sign_column_highlight = 0
-    let g:neosolarized_contrast = "low"
-    let g:neosolarized_visibility = "high"
+    colorscheme solarized
+    " hi! Normal guibg=NONE ctermbg=NONE
+    let g:gitgutter_override_sign_column_highlight = 0
+    let g:neosolarized_contrast = "hight"
+    let g:neosolarized_visibility = "hight"
     let g:neosolarized_vertSplitBgTrans = 1
     let g:neosolarized_bold = 1
     let g:neosolarized_underline = 1
     let g:neosolarized_italic = 0
+    let g:lightline.colorscheme = 'solarized'
 
-" Editor settings
-    " let &titlestring = expand("%:r")
-    " set title
-    set encoding=utf-8
-    set fileformat=unix
-    set ruler
-    set cmdheight=2
-    set lazyredraw
-    set foldcolumn=0
-    set mouse=n
-    " set clipboard=unnamedplus
-    set list
-    set listchars=tab:>.,trail:.,extends:\#,nbsp:.
-
-    " Split direction
-    set splitright
-    set splitbelow
-
-    " Shift text
-    nnoremap > >>
-    nnoremap < <<
-    vnoremap > >gv
-    vnoremap < <gv
-
-    " Auto move cursor to end or start line
-    set whichwrap+=h,l
-
-    " Return to last edit position when opening files (You want this!)
-    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
-    " Tabs
-    " change: Ctrl+Left, Ctrl+Right
-    " move: Alt+Left, Alt+Right
-    nnoremap <C-Left> :tabprevious<CR>
-    nnoremap <C-Right> :tabnext<CR>
-    nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
-    nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
-
-    set sessionoptions+=tabpages,globals
-
-    " Disable hightlight after search
-    nnoremap <esc> :noh<return><esc>
-    nnoremap <esc>^[ <esc>^[
-
-" Indents
-    set autoindent
-    set smartindent
-    set smarttab
-    set smartcase
-    set ignorecase
-    set shiftwidth=4
-    set expandtab
-    set tabstop=4
-    set softtabstop=4
-
-" Navigation in window buffers
-    nnoremap <C-h> <C-w>h
-    nnoremap <C-j> <C-w>j
-    nnoremap <C-k> <C-w>k
-    nnoremap <C-l> <C-w>l
-
-" Fast move cursor
-    noremap H ^
-    noremap L g_
-    noremap J 5j
-    noremap K 5k
-
-" Relative path settings
-    map <Leader>n :e <C-R>=escape(expand("%:p:h"),' ') . '/'<CR>
-    let g:ag_working_path_mode="r"
-
-" Trim spaces before save
-    autocmd BufWritePre * :%s/\s\+$//e
+    " hi LineNr guibg=bg
+    " set foldcolumn=2
+    " hi foldcolumn guibg=bg
+    " hi VertSplit guibg=NONE guifg=NONE
+    " set encoding=utf8
+    " set fillchars+=vert:\.
+    " hi clear VertSplit
+    " autocmd ColorScheme * highlight VertSplit cterm=NONE ctermfg=Green ctermbg=NONE
 
 " GitGutter
     let g:gitgutter_enabled=0
     nnoremap <silent> <leader>d :GitGutterToggle<cr>
 
-" Deoplete settings
-    source ~/.config/nvim/settings/deoplete.vim
+" Fix Styl files
+autocmd BufNewFile,BufRead *.styl set filetype=sass
 
-" Lightline
-    source ~/.config/nvim/settings/ligthline.vim
+let g:vim_json_syntax_conceal = 0
 
-" VimFiler
-    source ~/.config/nvim/settings/vimfiler.vim
-
-" Copy-cut-past
-    let g:copy_cut_paste_no_mappings = 1
-
-    " Use your keymap
-    nmap QC <Plug>CCP_CopyLine
-    vmap QC <Plug>CCP_CopyText
-
-    nmap QX <Plug>CCP_CutLine
-    vmap QX <Plug>CCP_CutText
-
-    nmap QV <Plug>CCP_PasteText
