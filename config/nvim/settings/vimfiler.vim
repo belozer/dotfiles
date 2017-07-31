@@ -15,3 +15,5 @@ nnoremap <silent> <BS> :VimFilerBufferDir -find<CR>
 
 nmap <buffer> N <Plug>(vimfiler_new_file)
 
+autocmd FileType vimfiler setlocal nonumber
+autocmd FileType vimfiler setlocal norelativenumber

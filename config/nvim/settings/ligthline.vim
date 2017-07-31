@@ -22,7 +22,7 @@ let g:lightline = {
 
 let g:lightline.tab = {
     \ 'active': [ 'tabnum', 'filename', 'modified' ],
-    \ 'inactive': [ 'tabnum', 'filename', 'modified' ] }
+    \ 'inactive': [ 'tabnum', 'fislename', 'modified' ] }
 
 let g:lightline.tabline = {
     \ 'left': [ [ 'tabs' ] ],

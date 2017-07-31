@@ -7,7 +7,7 @@
     set cmdheight=2
     set lazyredraw
     set foldcolumn=0
-    set mouse=n
+    set mouse=c
     " set clipboard=unnamedplus
     set list
     set listchars=tab:>.,trail:.,extends:\#,nbsp:.
@@ -90,4 +90,5 @@
 
     nmap QV <Plug>CCP_PasteText
 
-
+" Vim-move
+    let g:move_key_modifier = 'C'
