@@ -1,7 +1,7 @@
 # oh-my-zsh
 export ZSH=$HOME/.oh-my-zsh
 
-ZSH_THEME="amuse"
+ZSH_THEME="agnoster"
 plugins=(git git-flow git-extras yarn zsh_reload gulp docker docker-compose)
 
 source $ZSH/oh-my-zsh.sh
@@ -39,3 +39,10 @@ alias e=$EDITOR
 alias bemblock='bem create -l desktop.blocks -b'
 alias bempage='bem create -l desktop.bundles -b'
 
+prompt_context() {}
+
+if [[ $TILIX_ID ]]; then
+    source /etc/profile.d/vte.sh
+fi
+
+nvm use 6
