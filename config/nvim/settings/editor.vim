@@ -82,13 +82,14 @@
     let g:copy_cut_paste_no_mappings = 1
 
     " Use your keymap
-    nmap QC <Plug>CCP_CopyLine
-    vmap QC <Plug>CCP_CopyText
+    " Important! Required xclip
+    nmap <C-c> <Plug>CCP_CopyLine
+    vmap <C-c> <Plug>CCP_CopyText
 
-    nmap QX <Plug>CCP_CutLine
-    vmap QX <Plug>CCP_CutText
+    nmap <C-x> <Plug>CCP_CutLine
+    vmap <C-x> <Plug>CCP_CutText
 
-    nmap QV <Plug>CCP_PasteText
+    nmap <C-v> <Plug>CCP_PasteText
 
 " Vim-move
     let g:move_key_modifier = 'C'
