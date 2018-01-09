@@ -2,6 +2,7 @@
 export ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="agnoster"
+# ZSH_THEME="powerlevel9k/powerlevel9k"
 plugins=(git git-flow git-extras yarn zsh_reload gulp docker docker-compose)
 
 source $ZSH/oh-my-zsh.sh
@@ -45,4 +46,4 @@ if [[ $TILIX_ID ]]; then
     source /etc/profile.d/vte.sh
 fi
 
-nvm use 6
+nvm use 8
