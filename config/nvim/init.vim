@@ -46,8 +46,8 @@ call plug#begin(expand('~/.config/nvim/plugged'))
     Plug 'othree/yajs.vim'
     Plug 'othree/es.next.syntax.vim'
     Plug 'heavenshell/vim-jsdoc'
-    Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
-    Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+    " Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
+    " Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 
 " Find and Navigation
     Plug 'numkil/ag.nvim'
