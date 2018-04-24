@@ -28,7 +28,7 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 " Themes
     " Plug 'mhartington/oceanic-next'
-    " Plug 'jdkanani/vim-material-theme'
+    Plug 'jdkanani/vim-material-theme'
     " Plug 'altercation/vim-colors-solarized'
     " Plug 'kamwitsta/nordisk'
     " Plug 'icymind/NeoSolarized'
@@ -38,8 +38,9 @@ call plug#begin(expand('~/.config/nvim/plugged'))
     Plug 'NLKNguyen/papercolor-theme'
 
 " CSS
-    Plug 'wavded/vim-stylus'
-    Plug 'hail2u/vim-css3-syntax'
+    Plug 'iloginow/vim-stylus'
+    " Plug 'wavded/vim-stylus'
+    " Plug 'hail2u/vim-css3-syntax'
     " Plug 'lepture/vim-css'
 
 " JavaScript
@@ -56,6 +57,7 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 
 " Helpers
     " Plug 'w0rp/ale'
+    Plug 'bogado/file-line'
     Plug 'pbrisbin/vim-mkdir'
     Plug 'jiangmiao/auto-pairs'
     " Plug 'Townk/vim-autoclose'
@@ -90,11 +92,11 @@ let g:taboo_tabline = 0
     set  t_Co=256
     " let g:solarized_termcolors=256
     syntax on
-    " set background=dark
-    " colorscheme materialtheme
-    set background=light
-    colorscheme PaperColor
-    " hi! Normal guibg=NONE ctermbg=NONE
+    " set background=light
+    colorscheme materialtheme
+    set background=dark
+    " colorscheme PaperColor
+    hi! Normal guibg=NONE ctermbg=NONE
     let g:gitgutter_override_sign_column_highlight = 0
     let g:neosolarized_contrast = "hight"
     let g:neosolarized_visibility = "hight"
