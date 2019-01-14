@@ -33,12 +33,18 @@ call plug#begin(expand('~/.config/nvim/plugged'))
     " Plug 'kamwitsta/nordisk'
     " Plug 'icymind/NeoSolarized'
     " Plug 'jacoborus/tender.vim'
-    Plug 'flazz/vim-colorschemes'
+    Plug 'rafi/awesome-vim-colorschemes'
+    " Plug 'flazz/vim-colorschemes'
     " Plug 'arcticicestudio/nord-vim'
     Plug 'NLKNguyen/papercolor-theme'
+    Plug 'sonph/onehalf', {'rtp': 'vim/'}
+    Plug 'altercation/vim-colors-solarized'
+    Plug 'lifepillar/vim-solarized8'
 
 " CSS
     Plug 'iloginow/vim-stylus'
+    Plug 'ap/vim-css-color'
+    " Plug 'lilydjwg/colorizer'
     " Plug 'wavded/vim-stylus'
     " Plug 'hail2u/vim-css3-syntax'
     " Plug 'lepture/vim-css'
@@ -47,6 +53,8 @@ call plug#begin(expand('~/.config/nvim/plugged'))
     Plug 'othree/yajs.vim'
     Plug 'othree/es.next.syntax.vim'
     Plug 'heavenshell/vim-jsdoc'
+    Plug 'briancollins/vim-jst'
+    Plug 'leafgarland/typescript-vim'
     " Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
     " Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 
@@ -86,24 +94,29 @@ let g:taboo_tabline = 0
 " cnoreabbrev TC tabclose
 
 " Theme settings
-    " if (has("termguicolors"))
-    "     set termguicolors
-    " endif
-    set  t_Co=256
+    if (has("termguicolors"))
+        set termguicolors
+    endif
+    " set  t_Co=256
     " let g:solarized_termcolors=256
     syntax on
     " set background=light
-    colorscheme materialtheme
-    set background=dark
+    " colorscheme materialtheme
+    " colorscheme deus
+    colorscheme nord
+    " colorscheme cobalt2
+    " set background=dark
     " colorscheme PaperColor
     hi! Normal guibg=NONE ctermbg=NONE
+    hi! NonText ctermbg=NONE guibg=NONE
+
     let g:gitgutter_override_sign_column_highlight = 0
-    let g:neosolarized_contrast = "hight"
-    let g:neosolarized_visibility = "hight"
-    let g:neosolarized_vertSplitBgTrans = 1
-    let g:neosolarized_bold = 1
-    let g:neosolarized_underline = 1
-    let g:neosolarized_italic = 0
+    " let g:neosolarized_contrast = "hight"
+    " let g:neosolarized_visibility = "hight"
+    " let g:neosolarized_vertSplitBgTrans = 1
+    " let g:neosolarized_bold = 1
+    " let g:neosolarized_underline = 1
+    " let g:neosolarized_italic = 0
     " colorscheme blackbeauty
     " colorscheme blackboard
     " let g:airline_theme='solarized'
@@ -152,3 +165,26 @@ nnoremap Q <Nop>
     source ~/.config/nvim/settings/editor.vim
 
 " set relativenumber
+"
+
+" CtrlP
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
+" let g:ctrlp_user_command = 'ag -g "%s"'
+let g:ctrlp_lazy_update = 100
+let g:ctrlp_working_path_mode = 'wa'
+
+
+" AutoPairs
+let g:AutoPairsMultilineClose=0
+
+" Линейка
+" set nu
+" set rnu
+" set nuw=4
+" autocmd InsertEnter * set nornu
+" autocmd InsertLeave * set rnu
+
+set title
+auto BufEnter * let &titlestring = expand("%:t")
