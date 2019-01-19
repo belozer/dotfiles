@@ -100,14 +100,14 @@ let g:taboo_tabline = 0
     " set  t_Co=256
     " let g:solarized_termcolors=256
     syntax on
-    set background=light
+    " set background=light
     colorscheme solarized
     " colorscheme materialtheme
     " colorscheme deus
     " colorscheme nord
     " colorscheme cobalt2
-    " set background=dark
-    " colorscheme PaperColor
+    set background=dark
+    colorscheme PaperColor
     hi! Normal guibg=NONE ctermbg=NONE
     hi! NonText ctermbg=NONE guibg=NONE
 
