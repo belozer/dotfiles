@@ -1,12 +1,12 @@
 [user]
-	email = belozyorcev@ya.ru
-	name = Sergey Belozyorcev
+    email = belozyorcev@ya.ru
+    name = Sergey Belozyorcev
 [alias]
-	ci = commit
-	br = branch
-	co = checkout
-	st = status
-	hist = log --graph --pretty=format:'%C(red)%h%Creset %C(white)%s%Creset %Creset %n         %an%Creset %C(reset)%cr %n        %C(yellow)%d%Creset%n' --abbrev-commit --date=format:'%d.%m.%Y %H:%M:%S'
+    ci = commit
+    br = branch
+    co = checkout
+    st = status
+    hist = log --graph --pretty=format:'%C(red)%h%Creset %C(white)%s%Creset %Creset %n         %an%Creset %C(reset)%cr %n        %C(yellow)%d%Creset%n' --abbrev-commit --date=format:'%d.%m.%Y %H:%M:%S'
     lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
     lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
     lg = !"git lg1"
@@ -15,15 +15,15 @@
 [push]
 	default = simple
 [core]
-	editor = nvim
+    editor = nvim
 [rebase]
-	autosquash = true
+    autosquash = true
 [filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
 [http]
-	sslverify = true
+    sslverify = true
 [pull]
-	rebase = true
+    rebase = true
