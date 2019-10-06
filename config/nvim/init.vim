@@ -139,8 +139,6 @@ let g:taboo_tabline = 0
 " Fix Styl file
 autocmd BufNewFile,BufRead *.styl set filetype=sass
 
-let g:vim_json_syntax_conceal = 0
-
 
 set scrolljump=10
 set ttyfast
@@ -189,3 +187,7 @@ let g:AutoPairsMultilineClose=0
 
 set title
 auto BufEnter * let &titlestring = expand("%:t")
+
+let g:indentLine_conceallevel=0
+let g:indentLine_concealcursor=""
+
