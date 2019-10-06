@@ -8,7 +8,7 @@ ZSH_THEME="bureau"
 ZSH_THEME="avit"
 
 # ZSH_THEME="powerlevel9k/powerlevel9k"
-plugins=(git git-flow git-extras yarn zsh_reload gulp docker docker-compose jira zsh-autosuggestions)
+plugins=(git git-flow git-extras yarn zsh_reload gulp docker docker-compose jira)
 
 source $ZSH/oh-my-zsh.sh
 
