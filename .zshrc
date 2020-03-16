@@ -23,7 +23,18 @@ export INFOPATH=$HOME/.linuxbrew/share/info:$INFOPATH
 
 # NodeJS
 export NODE_PATH=:$HOME/npm/lib/node_modules
-export PATH=./node_modules/.bin:$PATH
+export PATH=$PATH./node_modules/.bin:../../node_modules/.bin:../../../node_modules/.bin
+
+# DotNet
+# export PATH=$PATH:$HOME/.dotnet/tools
+export DOTNET_ROOT=$HOME/dotnet
+export PATH=$PATH:$HOME/dotnet
+
+# Micrsoft SQL
+# https://docs.microsoft.com/ru-ru/sql/linux/quickstart-install-connect-ubuntu?view=sql-server-ver15
+export PATH=$PATH:/opt/mssql/bin
+export PATH=$PATH:/opt/mssql-tools/bin
+
 
 #
 # autoload -U add-zsh-hook
